@@ -3,14 +3,20 @@ import type { ThemeMode } from '@/types/brand'
 
 const STORAGE_KEY = 'theme-mode'
 
-/** Get initial theme from localStorage or default to light */
+/**
+ * Get initial theme from localStorage, defaulting to dark.
+ *
+ * Orpheus's brand manual (section 03 · Color, "Proporción y reglas") defines tinta
+ * (dark) as the dominant/signature composition — 60% coverage, "se reconoce aun sin
+ * logo" — so dark is the brand default here, not a generic light-first assumption.
+ */
 function getInitialTheme(): ThemeMode {
-  if (typeof window === 'undefined') return 'light'
+  if (typeof window === 'undefined') return 'dark'
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored === 'light' || stored === 'dark') {
     return stored
   }
-  return 'light'
+  return 'dark'
 }
 
 /** Reactive theme mode state */

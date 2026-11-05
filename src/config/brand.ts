@@ -3,291 +3,145 @@ import type { BrandConfig } from '@/types/brand'
 /**
  * Brand Configuration - Single Source of Truth
  *
- * This file defines ALL brand colors and fonts for the application.
- * Components use Tailwind classes (bg-brand-accent, font-headers) that
- * reference these values via CSS variables.
+ * Values sourced from Orpheus-Org/orpheus-templates, `manual/orpheus-manual-de-marca-v26.pdf`
+ * (section 03 · Color, section 04 · Tipografía) — the manual's text is the authority.
+ * Tinta/papel/rojo are independently corroborated by every `logo-vectorial/*.svg`.
+ * The 5 non-rojo service-line hexes in `lenguaje-grafico/*.svg` (service-lines/pill-system
+ * assets) use a different, apparently older palette than the manual text for those 5 —
+ * only the manual's swatches are followed here. Do not hand-tune these without
+ * re-checking the manual — it is the brand's actual source of truth, not this file.
+ *
+ * ## Composition rule (manual, "Proporción y reglas")
+ *
+ * Orpheus's brand is ink-dominant, not light-dominant: the canonical signature is
+ * tinta background / papel type / rojo accent. "Un color manda en cada composición:
+ * tinta o papel" — a single section of the page should be either all-ink or all-paper,
+ * never a blend. In practice: `light` below is the papel composition, `dark` is the
+ * tinta composition, and base/background invert cleanly between them (tinta <-> papel),
+ * which happens to line up with this template's light/dark architecture. Landing-page
+ * sections alternate between the two per the mock (hero/portfolio = papel, focus/
+ * services/contact = tinta) — that alternation is a layout decision per section, it
+ * is independent of (and probably should not be driven by) a user dark-mode toggle.
  *
  * ## Quick Reference
  *
- * | Color      | Light Mode Use                | Dark Mode Use               |
- * |------------|-------------------------------|-----------------------------|
- * | base       | Dark text on light surfaces   | Light text on dark surfaces |
- * | accent     | Primary brand color           | Slightly brighter variant   |
- * | contrast   | High-impact CTAs              | Same or adjusted for dark   |
- * | secondary  | Supporting accent             | Slightly brighter variant   |
- * | neutral    | Cards, elevated surfaces      | Elevated dark surfaces      |
- * | background | Page canvas (light)           | Page canvas (dark)          |
+ * | Role       | Light (papel composition) | Dark (tinta composition) |
+ * |------------|----------------------------|---------------------------|
+ * | background | papel #F2EDE4              | tinta #111111             |
+ * | base       | tinta #111111              | papel #F2EDE4             |
+ * | accent     | rojo señal #E63323          | same                      |
+ * | secondary  | naranja andén #F2711C      | same (manual: usable "sobre tinta") |
+ * | contrast   | electric aqua #69E7F2      | same (manual: usable "sobre tinta") |
+ * | neutral    | white card surface         | elevated near-black       |
  *
- * ## Changing the Brand
+ * `neutral` (card/elevation surface) is not a manual swatch — the brand manual
+ * doesn't define UI elevation, only the flat composition colors — so this is a
+ * judgment call, not a literal brand value.
  *
- * 1. Edit the values below
- * 2. All components automatically update
- * 3. No other files need modification
+ * ## Service line colors
  *
- * ## Color Harmony Tips
+ * The manual defines 5 more swatches tied to Orpheus's 6 service lines (Estrategia =
+ * rojo, Contenido, IA, Desarrollo, Automatización, Marca), each capped at ~1% coverage,
+ * used only as category tags/graphic elements, never as general UI chrome. These don't
+ * fit the 6-role BrandPalette, so they're exported separately below as `serviceLines`.
  *
- * - Use https://coolors.co to generate harmonious palettes
- * - Use https://webaim.org/resources/contrastchecker/ to verify contrast
- * - Accent + Secondary should be analogous (adjacent on color wheel)
- * - Contrast should pop against both accent and secondary
- *
- * @see src/types/brand.ts for detailed documentation on each color role
+ * @see src/types/brand.ts for the base template's role documentation
  */
 export const brandConfig: BrandConfig = {
-  name: 'Vue Template',
-  tagline: 'Modern Vue 3 Development',
+  name: 'Orpheus Studio',
+  tagline: ['Rooted in creativity, driven by innovation.', 'Build today, to inspire tomorrow.'],
 
   /**
-   * Light Mode Palette
-   *
-   * Design principle: Dark text on light surfaces.
-   * The 60-30-10 rule: 60% background/neutral, 30% base, 10% accents.
-   *
-   * Palette harmony: Indigo accent with purple secondary (analogous)
-   * and cyan contrast (complementary split).
+   * Light palette = the "papel" composition.
    */
   light: {
-    /**
-     * Base: Near-black with slight warmth
-     * - Primary text color
-     * - Must contrast 4.5:1+ with background (#ffffff) ✓ 16.89:1
-     * - Must contrast 4.5:1+ with neutral (#f8fafc) ✓ 15.29:1
-     */
-    base: '#1a1a2e',
+    /** Tinta. Primary text/icons/borders. On papel: 16.2:1 (manual, "Texto y fondo"). */
+    base: '#111111',
 
-    /**
-     * Accent: Indigo 500
-     * - Primary brand color, buttons, links
-     * - Conveys: creativity, trust, sophistication
-     * - Contrast with background: 4.63:1 ✓
-     */
-    accent: '#6366f1',
+    /** Rojo señal. Manual: "una palabra, cifra o etiqueta por pieza" — use sparingly. */
+    accent: '#E63323',
 
-    /**
-     * Contrast: Cyan 400
-     * - High-visibility CTAs, limited use
-     * - Complementary to indigo accent
-     * - Use for maximum attention
-     */
-    contrast: '#22d3ee',
+    /** Electric aqua. Manual: graphic element only on papel (not body text) — pills/blocks. */
+    contrast: '#69E7F2',
 
-    /**
-     * Secondary: Purple 500
-     * - Analogous to accent (adjacent on color wheel)
-     * - Secondary buttons, tags, badges
-     * - Creates visual variety without clashing
-     */
-    secondary: '#a855f7',
+    /** Naranja andén (Línea de Contenido). Analogous to rojo. Graphic element only on papel. */
+    secondary: '#F2711C',
 
-    /**
-     * Neutral: Slate 50
-     * - Cards, elevated surfaces
-     * - Subtle distinction from pure white background
-     * - 5% darker than background
-     */
-    neutral: '#f8fafc',
+    /** Not a manual swatch — elevated card surface against the papel canvas. */
+    neutral: '#FFFFFF',
 
-    /**
-     * Background: Pure white
-     * - Page canvas, largest surface area
-     * - Clean, minimal, professional
-     */
-    background: '#ffffff',
+    /** Papel. */
+    background: '#F2EDE4',
   },
 
   /**
-   * Dark Mode Palette
-   *
-   * Design principle: Light text on dark surfaces.
-   * Key inversions: base becomes light, background becomes dark.
-   * Accents are brightened 1-2 shades for visibility on dark.
+   * Dark palette = the "tinta" composition (Orpheus's actual default/signature look).
    */
   dark: {
-    /**
-     * Base: Slate 100
-     * - INVERTED from light mode (was dark, now light)
-     * - Primary text color on dark surfaces
-     * - Contrast with background (#0f172a): 15.24:1 ✓
-     */
-    base: '#f1f5f9',
+    /** Papel. Inverted from light. On tinta: 16.2:1. */
+    base: '#F2EDE4',
 
-    /**
-     * Accent: Indigo 400
-     * - Brightened from light mode for dark background visibility
-     * - Same hue family, lighter value
-     */
-    accent: '#818cf8',
+    /** Rojo señal. Manual: on tinta only at 24px+ (4.4:1) — large text/display only. */
+    accent: '#E63323',
 
-    /**
-     * Contrast: Cyan 400
-     * - Works well on both light and dark
-     * - No change needed for this particular cyan
-     */
-    contrast: '#22d3ee',
+    /** Electric aqua. Manual: explicitly usable as text on tinta (14.3:1-class). */
+    contrast: '#69E7F2',
 
-    /**
-     * Secondary: Purple 400
-     * - Brightened from light mode
-     * - Maintains analogous relationship with accent
-     */
-    secondary: '#c084fc',
+    /** Naranja andén. Manual: explicitly usable as text on tinta. */
+    secondary: '#F2711C',
 
-    /**
-     * Neutral: Slate 800
-     * - Elevated dark surface (lighter than background)
-     * - Creates card/modal separation from page
-     */
-    neutral: '#1e293b',
+    /** Not a manual swatch — elevated surface, slightly lighter than tinta background. */
+    neutral: '#1C1C1C',
 
-    /**
-     * Background: Slate 900
-     * - INVERTED from light mode (was light, now dark)
-     * - Not pure black - easier on eyes
-     * - Subtle blue tint for modern feel
-     */
-    background: '#0f172a',
+    /** Tinta. Orpheus's default/dominant background (60% per manual's proportion rule). */
+    background: '#111111',
   },
 
   /**
-   * Typography Configuration
-   *
-   * Font pairing strategy: Display + Serif headers + Sans body + Mono code
-   * This creates clear hierarchy while maintaining readability.
-   *
-   * Personality: Creative, editorial, developer-friendly
-   *
-   * @see src/types/brand.ts for font selection guidelines
+   * Typography. Manual section 04: Anton = display/headlines (caps only), Syne =
+   * display-wide subheads/labels (caps only, ExtraBold), Inter = body/slogan/statement.
+   * Weight isn't part of BrandTypography's font-family-only slots — pair `font-headers`
+   * with `font-extrabold` in markup to match the manual's "Syne ExtraBold" spec.
    */
   typography: {
-    /**
-     * Logo: Bungee
-     * - Distinctive display font for brand recognition
-     * - Bold, blocky, memorable
-     * - Use only for logo and hero moments
-     */
-    logo: 'Bungee',
+    /** Anton. Manual: "Display, titulares y cifras." Hero headlines only, never body. */
+    logo: 'Anton',
 
-    /**
-     * Headers: Playfair Display SC
-     * - Elegant serif with small caps
-     * - Creates strong visual hierarchy
-     * - Editorial, sophisticated feel
-     */
-    headers: 'Playfair Display SC',
+    /** Syne (ExtraBold). Manual: "Display ancha, subtítulos y labels." */
+    headers: 'Syne Variable',
 
-    /**
-     * Primary: Source Sans Pro
-     * - Highly readable humanist sans-serif
-     * - Excellent for body text at all sizes
-     * - Professional, friendly, versatile
-     */
-    primary: 'Source Sans Pro',
+    /** Inter. Manual: body text, slogan (400), statement (600), social posters (800). */
+    primary: 'Inter Variable',
 
-    /**
-     * Secondary: Source Code Pro
-     * - Monospace for code and technical content
-     * - Pairs well with Source Sans Pro (same family)
-     * - Clear character differentiation
-     */
-    secondary: 'Source Code Pro',
+    /** IBM Plex Mono. Manual: "datos" — timestamps, technical/data labels. */
+    secondary: 'IBM Plex Mono',
   },
 }
 
-/*
- * ============================================================================
- * BRAND PALETTE EXAMPLES
- * ============================================================================
- *
- * Below are example palettes for different brand personalities.
- * Copy and modify the brandConfig above to match your needs.
- *
- * ----------------------------------------------------------------------------
- * CORPORATE / PROFESSIONAL
- * ----------------------------------------------------------------------------
- * light: {
- *   base: '#0f172a',       // Slate 900 - serious, authoritative
- *   accent: '#2563eb',     // Blue 600 - trust, stability
- *   contrast: '#f59e0b',   // Amber 500 - warmth, attention
- *   secondary: '#0891b2',  // Cyan 600 - complementary to blue
- *   neutral: '#f1f5f9',    // Slate 100
- *   background: '#ffffff',
- * }
- * typography: {
- *   logo: 'Inter',
- *   headers: 'Inter',
- *   primary: 'Inter',
- *   secondary: 'JetBrains Mono',
- * }
- *
- * ----------------------------------------------------------------------------
- * CREATIVE / PLAYFUL
- * ----------------------------------------------------------------------------
- * light: {
- *   base: '#18181b',       // Zinc 900
- *   accent: '#f43f5e',     // Rose 500 - energetic, youthful
- *   contrast: '#84cc16',   // Lime 500 - fresh, vibrant
- *   secondary: '#f97316',  // Orange 500 - warm, inviting
- *   neutral: '#fafafa',    // Zinc 50
- *   background: '#ffffff',
- * }
- * typography: {
- *   logo: 'Bangers',
- *   headers: 'Poppins',
- *   primary: 'Nunito',
- *   secondary: 'Fira Code',
- * }
- *
- * ----------------------------------------------------------------------------
- * LUXURY / EDITORIAL
- * ----------------------------------------------------------------------------
- * light: {
- *   base: '#1c1917',       // Stone 900 - rich, grounded
- *   accent: '#a16207',     // Yellow 700 - gold, premium
- *   contrast: '#be123c',   // Rose 700 - elegant accent
- *   secondary: '#4d7c0f',  // Lime 700 - organic, refined
- *   neutral: '#fafaf9',    // Stone 50
- *   background: '#ffffff',
- * }
- * typography: {
- *   logo: 'Cormorant Garamond',
- *   headers: 'Playfair Display',
- *   primary: 'Lora',
- *   secondary: 'Georgia',
- * }
- *
- * ----------------------------------------------------------------------------
- * TECH / DEVELOPER
- * ----------------------------------------------------------------------------
- * light: {
- *   base: '#09090b',       // Zinc 950
- *   accent: '#22c55e',     // Green 500 - growth, go
- *   contrast: '#eab308',   // Yellow 500 - warning, attention
- *   secondary: '#06b6d4',  // Cyan 500 - information
- *   neutral: '#f4f4f5',    // Zinc 100
- *   background: '#fafafa',
- * }
- * typography: {
- *   logo: 'Orbitron',
- *   headers: 'JetBrains Mono',
- *   primary: 'Inter',
- *   secondary: 'JetBrains Mono',
- * }
- *
- * ----------------------------------------------------------------------------
- * MINIMAL / MONOCHROME
- * ----------------------------------------------------------------------------
- * light: {
- *   base: '#171717',       // Neutral 900
- *   accent: '#171717',     // Same as base - minimal
- *   contrast: '#171717',   // Same - rely on weight/size
- *   secondary: '#525252',  // Neutral 600
- *   neutral: '#fafafa',    // Neutral 50
- *   background: '#ffffff',
- * }
- * typography: {
- *   logo: 'Inter',
- *   headers: 'Inter',
- *   primary: 'Inter',
- *   secondary: 'Inter',
- * }
+/**
+ * Orpheus's 6 service-line colors (manual, section 03 · Color + 05 · Lenguaje gráfico).
+ * Each line is capped at ~1% coverage and used only as a category tag/graphic element
+ * (metro-line accents, pill tags, portfolio category badges) — never as general UI
+ * chrome. Rojo doubles as both the brand accent (see `brandConfig`) and the Estrategia
+ * line color.
  */
+export const serviceLines = {
+  estrategia: '#E63323', // Rojo señal
+  contenido: '#F2711C', // Naranja andén
+  ia: '#D8EB47', // Lemon lime
+  desarrollo: '#69E7F2', // Electric aqua
+  marca: '#F4C3C2', // Cotton rose
+  automatizacion: '#0E5838', // Emerald depths
+} as const
+
+/**
+ * Brand accent fonts beyond the base 4-role system (manual, section 04 · Tipografía:
+ * "Acentos"). Not part of BrandTypography since they're used for specific brand
+ * moments, not general UI roles — expose as extra CSS vars / Tailwind tokens where
+ * they're actually used (quotes, hand-drawn annotations).
+ */
+export const accentFonts = {
+  quote: 'Instrument Serif', // Italic, for pull quotes
+  handwritten: 'Caveat', // Hand-annotation layer (manual: always rendered in rojo)
+  handwrittenBold: 'Permanent Marker', // Heavier hand-annotation / sticker treatment
+} as const

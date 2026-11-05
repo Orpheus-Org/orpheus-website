@@ -1,5 +1,5 @@
 import { computed, watchEffect } from 'vue'
-import { brandConfig } from '@/config/brand'
+import { accentFonts, brandConfig, serviceLines } from '@/config/brand'
 import { useTheme } from './useTheme'
 import type { BrandPalette, BrandTypography } from '@/types/brand'
 
@@ -23,6 +23,17 @@ function injectBrandCSS(palette: BrandPalette, typography: BrandTypography) {
   // Inject font variables
   Object.entries(typography).forEach(([key, value]) => {
     root.style.setProperty(`--font-${key}`, value)
+  })
+
+  // Service line tag colors — same in both themes, not part of the 6-role palette
+  Object.entries(serviceLines).forEach(([key, value]) => {
+    root.style.setProperty(`--line-${key}`, value)
+  })
+
+  // Accent fonts beyond the 4-role system (quotes, hand annotations)
+  Object.entries(accentFonts).forEach(([key, value]) => {
+    const kebabKey = key.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)
+    root.style.setProperty(`--font-${kebabKey}`, value)
   })
 }
 

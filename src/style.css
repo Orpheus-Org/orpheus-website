@@ -23,6 +23,20 @@
   --font-headers: var(--font-headers), serif;
   --font-primary: var(--font-primary), system-ui, sans-serif;
   --font-secondary: var(--font-secondary), monospace;
+
+  /* Service line tag colors (bg-line-estrategia, etc.) - categorical, not part of
+     the 6-role palette. See src/config/brand.ts `serviceLines`. */
+  --color-line-estrategia: var(--line-estrategia);
+  --color-line-contenido: var(--line-contenido);
+  --color-line-ia: var(--line-ia);
+  --color-line-desarrollo: var(--line-desarrollo);
+  --color-line-marca: var(--line-marca);
+  --color-line-automatizacion: var(--line-automatizacion);
+
+  /* Brand accent fonts beyond the 4-role system. See src/config/brand.ts `accentFonts`. */
+  --font-quote: var(--font-quote), serif;
+  --font-handwritten: var(--font-handwritten), cursive;
+  --font-handwritten-bold: var(--font-handwritten-bold), cursive;
 }
 
 /*

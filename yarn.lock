@@ -1447,6 +1447,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource-variable/caveat@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/caveat@npm:5.3.0"
+  checksum: 10c0/f62ac6dfa4276f06e67c31eeaadd5d97cf488557c0fecbc3065a368cf717604850dca5e530ac0c6095325cad18a9aeb05c7321201e7b10f1cf3143fb524d96f4
+  languageName: node
+  linkType: hard
+
+"@fontsource-variable/inter@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/inter@npm:5.3.0"
+  checksum: 10c0/46fbe41e8482a718f99634c8254346c6081d615415059be12e177224c903d688199125967825e75d4b8122668fd83f70880e11d4e02d08c20b503c65fe2a96d1
+  languageName: node
+  linkType: hard
+
+"@fontsource-variable/syne@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/syne@npm:5.3.0"
+  checksum: 10c0/a495c9db39d7b33aa4950c60edea70fc9e2038c9ce5b38b84ac1551db879979ad6974086a1b6a8d90ec94c588e479dc9d788437ecbcd627c7a4fb13d4463ad11
+  languageName: node
+  linkType: hard
+
+"@fontsource/anton@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource/anton@npm:5.3.0"
+  checksum: 10c0/7d5a3d961d598b6331c8f0cb17f333a6a4397589b27f6d882617fc42f64a1f93b10d794f33f734ea69705318082fcd84aeb9dca077d88b5688321f293640f88b
+  languageName: node
+  linkType: hard
+
+"@fontsource/ibm-plex-mono@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource/ibm-plex-mono@npm:5.3.0"
+  checksum: 10c0/4aaf5a3c9efc7c32de4fa46ff3187ac63720904beab825f331ac01800038899761da23270f09d3fb5cff22f7cdc366904834854e2107229ad60833bba71c223d
+  languageName: node
+  linkType: hard
+
+"@fontsource/instrument-serif@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource/instrument-serif@npm:5.3.0"
+  checksum: 10c0/4b04757b67e17b00b631d6ecc9897fbe3129bff2a4320d222827be54f5685565b055ed7b656885da32c3cc05827b080513705d92aa746c666b5a785b3c9f30a2
+  languageName: node
+  linkType: hard
+
+"@fontsource/permanent-marker@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource/permanent-marker@npm:5.3.0"
+  checksum: 10c0/8f68c7776ac1b4bf4603301af12b2b232f48c13b39bdc84b5b81966286af73351fc9d7d2f805f87350317bbb9b055253a8c6939f4b461bceed59866a6beb4c13
+  languageName: node
+  linkType: hard
+
 "@humanfs/core@npm:^0.19.1":
   version: 0.19.1
   resolution: "@humanfs/core@npm:0.19.1"
@@ -7103,6 +7152,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vue-site@workspace:."
   dependencies:
+    "@fontsource-variable/caveat": "npm:^5.3.0"
+    "@fontsource-variable/inter": "npm:^5.3.0"
+    "@fontsource-variable/syne": "npm:^5.3.0"
+    "@fontsource/anton": "npm:^5.3.0"
+    "@fontsource/ibm-plex-mono": "npm:^5.3.0"
+    "@fontsource/instrument-serif": "npm:^5.3.0"
+    "@fontsource/permanent-marker": "npm:^5.3.0"
     "@prettier/plugin-xml": "npm:^3.4.2"
     "@tailwindcss/vite": "npm:^4.1.17"
     "@types/marked": "npm:^6.0.0"
