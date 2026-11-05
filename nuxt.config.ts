@@ -10,7 +10,20 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxt/devtools'],
+  modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxt/devtools', 'nuxt-i18n-micro'],
+
+  // Spanish-only for now (all real site copy is Spanish per orpheus-mocks); schema +
+  // composable are already locale-ready (see app/types/locale.ts, useLocale.ts) so
+  // adding `en` later is just a new locales/en.json + one entry here, no code changes.
+  // `no_prefix`: no reason for a /es/ URL prefix with a single locale — switch to
+  // `prefix_except_default` when a second locale is actually added.
+  i18n: {
+    locales: [{ code: 'es', iso: 'es-MX' }],
+    defaultLocale: 'es',
+    strategy: 'no_prefix',
+    translationDir: 'locales',
+    meta: true,
+  },
 
   // Auto-import components without directory prefix
   components: [{ path: '~/components', pathPrefix: false }],

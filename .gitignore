@@ -40,5 +40,9 @@ logs
 # TypeScript
 *.tsbuildinfo
 
+# nuxt-i18n-micro auto-scaffolds an empty per-page translation stub for every page
+# route on dev/build — not authored content, regenerates on its own.
+locales/pages/
+
 # Claude Code local settings
 .claude/

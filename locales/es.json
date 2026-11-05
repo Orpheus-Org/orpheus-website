@@ -1,0 +1,130 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "readMore": "Leer más"
+  },
+
+  "nav": {
+    "nosotros": "nosotros",
+    "servicios": "servicios",
+    "portafolio": "portafolio",
+    "metodologia": "metodología",
+    "contacto": "contacto",
+    "accesoClientes": "acceso clientes",
+    "agendaDiagnostico": "agenda tu diagnóstico"
+  },
+
+  "footer": {
+    "correoLabel": "correo",
+    "whatsappLabel": "whatsapp",
+    "instagramLabel": "instagram",
+    "baseLabel": "base",
+    "placeholder": "POR DEFINIR"
+  },
+
+  "brief": {
+    "eyebrow": "Agenda tu diagnóstico",
+    "title": "Client Brief",
+    "intro": "Este brief nos ayuda a entender tu negocio antes de la primera sesión. Respóndelo con calma y con tus propias palabras: entre más claro lo tengamos, mejor será la propuesta.",
+    "help": "Son 6 secciones cortas y al final eliges el día de tu diagnóstico. Te toma unos 10 minutos.",
+    "start": "empezar el brief",
+    "back": "volver al inicio",
+    "previous": "← anterior",
+    "next": "siguiente",
+    "submit": "enviar y elegir horario",
+    "requiredError": "Para continuar falta {fields}.",
+    "emailError": "Revisa el correo: parece incompleto.",
+    "steps": {
+      "contact": {
+        "title": "Contacto",
+        "help": "Para saber con quién hablamos y por dónde escribirte.",
+        "fields": {
+          "name": "Nombre completo",
+          "role": "Puesto",
+          "company": "Empresa",
+          "city": "Ciudad",
+          "email": "Correo",
+          "whatsapp": "WhatsApp",
+          "website": "Sitio web o redes",
+          "websitePlaceholder": "@tunegocio o tusitio.com"
+        }
+      },
+      "business": {
+        "title": "Tu negocio",
+        "help": "Lo básico para entender qué haces y para quién.",
+        "fields": {
+          "industry": "Giro o industria",
+          "yearsOperating": "Años operando",
+          "teamSize": "Tamaño del equipo",
+          "teamSizeOptions": ["solo yo", "2 a 5 personas", "6 a 20 personas", "más de 20"],
+          "averageTicket": "Ticket promedio",
+          "averageTicketPlaceholder": "Lo que gasta un cliente en una compra",
+          "mainProducts": "Productos o servicios principales",
+          "idealClient": "¿Quién es tu cliente ideal?"
+        }
+      },
+      "situation": {
+        "title": "Situación actual",
+        "help": "Cómo trabajas hoy y qué canales ya usas.",
+        "fields": {
+          "reason": "¿Qué te trajo con nosotros?",
+          "channels": "Canales que usas hoy",
+          "channelOptions": [
+            "Instagram",
+            "Facebook",
+            "TikTok",
+            "WhatsApp Business",
+            "sitio web",
+            "tienda física",
+            "marketplace",
+            "otro"
+          ],
+          "tools": "Herramientas que ya usas",
+          "toolsPlaceholder": "CRM, ERP, punto de venta, hojas de cálculo"
+        }
+      },
+      "needs": {
+        "title": "Necesidades",
+        "help": "Marca todo lo que te interese, aunque no estés seguro.",
+        "fields": {
+          "services": "¿En qué te podemos ayudar?",
+          "serviceOptions": ["estrategia", "contenido", "IA", "automatización", "desarrollo web", "marca"],
+          "problem": "El problema principal que quieres resolver",
+          "attempted": "¿Qué has intentado antes y cómo te fue?"
+        }
+      },
+      "goals": {
+        "title": "Objetivos",
+        "help": "Dónde quieres estar y cómo lo vamos a medir.",
+        "fields": {
+          "goal3m": "Objetivo a 3 meses",
+          "goal12m": "Objetivo a 12 meses",
+          "successMetric": "¿Cómo sabremos que funcionó?",
+          "successMetricPlaceholder": "Ventas, citas, seguidores, tiempo ahorrado"
+        }
+      },
+      "investment": {
+        "title": "Inversión y tiempos",
+        "help": "Nos ayuda a proponerte algo que sí puedas arrancar.",
+        "fields": {
+          "investmentRange": "Rango de inversión mensual (MXN)",
+          "investmentOptions": [
+            "menos de $10,000",
+            "$10,000 a $20,000",
+            "$20,000 a $40,000",
+            "más de $40,000",
+            "aún no lo defino"
+          ],
+          "startDate": "Fecha ideal de arranque",
+          "decisionMaker": "¿Quién toma la decisión?"
+        }
+      }
+    },
+    "schedule": {
+      "title": "Agenda tu diagnóstico",
+      "help": "Elige día y hora para tu sesión de {duration} minutos por videollamada. Horario de Querétaro.",
+      "thanks": "gracias por el brief."
+    }
+  }
+}
