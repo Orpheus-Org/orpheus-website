@@ -6,7 +6,7 @@ export default {
   trailingComma: 'es5',
   bracketSpacing: true,
   arrowParens: 'always',
-  plugins: ['prettier-plugin-tailwindcss'],
+  plugins: ['prettier-plugin-tailwindcss', '@prettier/plugin-xml'],
   overrides: [
     {
       files: ['*.vue'],

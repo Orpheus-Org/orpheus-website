@@ -2,9 +2,11 @@ import pluginVue from 'eslint-plugin-vue'
 import vueTsEslintConfig from '@vue/eslint-config-typescript'
 import prettierConfig from '@vue/eslint-config-prettier'
 import unusedImports from 'eslint-plugin-unused-imports'
+import importX from 'eslint-plugin-import-x'
+import withNuxt from './.nuxt/eslint.config.mjs'
 
-export default [
-  // Vue recommended rules (includes parser setup)
+export default withNuxt(
+  // Vue recommended rules
   ...pluginVue.configs['flat/recommended'],
 
   // TypeScript support for Vue
@@ -13,12 +15,23 @@ export default [
   // Prettier integration
   prettierConfig,
 
-  // Custom rules for all files
+  // Import sorting and unused imports
   {
     plugins: {
       'unused-imports': unusedImports,
+      'import-x': importX,
     },
     rules: {
+      // Import sorting
+      'import-x/order': [
+        'warn',
+        {
+          alphabetize: { order: 'asc', caseInsensitive: true },
+          groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index']],
+          'newlines-between': 'always',
+        },
+      ],
+
       // Unused imports cleanup
       'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': [
@@ -34,6 +47,14 @@ export default [
       // Console/debugger warnings in production
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    },
+  },
+
+  // Nuxt pages, layouts, and reserved root-level files (allow single-word names)
+  {
+    files: ['**/pages/**/*.vue', '**/layouts/**/*.vue', 'app/app.vue', 'app/error.vue'],
+    rules: {
+      'vue/multi-word-component-names': 'off',
     },
   },
 
@@ -69,19 +90,20 @@ export default [
     files: ['**/*.ts', '**/*.tsx', '**/*.vue'],
     rules: {
       '@typescript-eslint/no-unused-vars': 'off', // Handled by unused-imports
-      '@typescript-eslint/explicit-function-return-type': 'off', // Too strict for Vue templates
+      '@typescript-eslint/explicit-function-return-type': 'off',
     },
   },
 
   // Ignore patterns
   {
     ignores: [
+      '.nuxt/**',
+      '.output/**',
       'dist/**',
-      'dev-dist/**',
       'node_modules/**',
       '*.config.js',
       '*.config.ts',
       '*.config.mjs',
     ],
-  },
-]
+  }
+)
