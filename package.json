@@ -1,0 +1,50 @@
+{
+  "name": "vue-site",
+  "type": "module",
+  "packageManager": "yarn@4.10.3",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir dist",
+    "preview": "vite preview",
+    "format": "prettier --list-different --write .",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.2",
+    "@tailwindcss/vite": "^4.1.17",
+    "@types/marked": "^6.0.0",
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.2",
+    "@vitest/coverage-v8": "^4.0.15",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.8.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "eslint-plugin-vue": "^10.6.2",
+    "happy-dom": "^20.0.11",
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3",
+    "unplugin-fonts": "^1.4.0",
+    "vite": "^7.2.6",
+    "vite-plugin-pwa": "^1.2.0",
+    "vitest": "^4.0.15",
+    "vue-eslint-parser": "^10.2.0",
+    "vue-tsc": "^3.1.6",
+    "web-vitals": "^5.1.0"
+  },
+  "dependencies": {
+    "marked": "^17.0.1",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
+  }
+}
