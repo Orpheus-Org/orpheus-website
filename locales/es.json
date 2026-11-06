@@ -46,7 +46,11 @@
     "ledger": {
       "estudio": {
         "title": "Estudio",
-        "members": ["Ana Sofía Urrutia", "CEO y brand strategist", "Equipo de producción audiovisual"],
+        "members": [
+          "Ana Sofía Urrutia",
+          "CEO y brand strategist",
+          "Equipo de producción audiovisual"
+        ],
         "placeholderRole": "Socio desarrollador",
         "operatingSince": "En operación desde nov 2025"
       },
@@ -144,7 +148,14 @@
         "help": "Marca todo lo que te interese, aunque no estés seguro.",
         "fields": {
           "services": "¿En qué te podemos ayudar?",
-          "serviceOptions": ["estrategia", "contenido", "IA", "automatización", "desarrollo web", "marca"],
+          "serviceOptions": [
+            "estrategia",
+            "contenido",
+            "IA",
+            "automatización",
+            "desarrollo web",
+            "marca"
+          ],
           "problem": "El problema principal que quieres resolver",
           "attempted": "¿Qué has intentado antes y cómo te fue?"
         }

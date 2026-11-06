@@ -105,7 +105,7 @@ function cardInitialStyle(i: number) {
                   <span
                     class="slf-tag"
                     :style="{ '--c': sloganRows[0]!.tagColor }"
-                  >{{ sloganRows[0]!.tagLabel() }}</span
+                    >{{ sloganRows[0]!.tagLabel() }}</span
                   >
                   <span class="slf-in">
                     <svg
@@ -153,7 +153,7 @@ function cardInitialStyle(i: number) {
                 <span
                   class="sl-sans"
                   :style="{ color: serviceLines.marca }"
-                >creativit<span class="sl-serif">y,</span></span
+                  >creativit<span class="sl-serif">y,</span></span
                 >
                 <span
                   class="slf"
@@ -163,7 +163,7 @@ function cardInitialStyle(i: number) {
                   <span
                     class="slf-tag"
                     :style="{ '--c': sloganRows[1]!.tagColor }"
-                  >{{ sloganRows[1]!.tagLabel() }}</span
+                    >{{ sloganRows[1]!.tagLabel() }}</span
                   >
                   <span class="slf-in">
                     <svg
@@ -216,7 +216,7 @@ function cardInitialStyle(i: number) {
                   <span
                     class="slf-tag"
                     :style="{ '--c': sloganRows[2]!.tagColor }"
-                  >{{ sloganRows[2]!.tagLabel() }}</span
+                    >{{ sloganRows[2]!.tagLabel() }}</span
                   >
                   <span class="slf-in">
                     <svg
@@ -260,7 +260,7 @@ function cardInitialStyle(i: number) {
                 <span
                   class="sl-sans"
                   :style="{ color: serviceLines.ia }"
-                >innovatio<span class="sl-serif">n.</span></span
+                  >innovatio<span class="sl-serif">n.</span></span
                 >
               </div>
             </div>
@@ -273,7 +273,7 @@ function cardInitialStyle(i: number) {
           <div class="deck-side deck-der">
             <span class="label">{{ t('hero.deckSide.projectsLabel') }}</span>
             <span class="deck-cuenta dato"
-            ><b>01</b> / {{ String(heroDeckProjects.length).padStart(2, '0') }}</span
+              ><b>01</b> / {{ String(heroDeckProjects.length).padStart(2, '0') }}</span
             >
           </div>
 

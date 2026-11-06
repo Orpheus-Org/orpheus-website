@@ -36,7 +36,7 @@ useIsotypeTransition(stageRef)
     <div class="t-post">
       <span class="label">{{ t('hero.transicion.postLabel') }}</span>
       <span class="headline"
-      >{{ t('hero.transicion.postHeadlineLine1') }}<br />{{
+        >{{ t('hero.transicion.postHeadlineLine1') }}<br />{{
           t('hero.transicion.postHeadlineLine2')
         }}</span
       >
