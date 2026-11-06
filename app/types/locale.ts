@@ -52,6 +52,62 @@ export const localeSchema = z.object({
     placeholder: z.string(),
   }),
 
+  // Human-readable service line names — the 6 colored slugs/hex values live in
+  // app/config/brand.ts `serviceLines`; display text lives here. Order matches the
+  // slugs, not necessarily the display order any one section uses them in (see
+  // `hero.ledger.lineasOrder` for the mock's specific pill ordering).
+  services: z.object({
+    lines: z.object({
+      estrategia: z.string(),
+      contenido: z.string(),
+      ia: z.string(),
+      desarrollo: z.string(),
+      marca: z.string(),
+      automatizacion: z.string(),
+    }),
+  }),
+
+  // Portada / hero — content pulled directly from orpheus-mocks/.../index.html's
+  // #portada section. The English slogan itself ("Rooted in creativity...") is NOT
+  // here — it's brandConfig.tagline (see note below) — only the Spanish copy around it.
+  hero: z.object({
+    meta: z.object({
+      portfolioLabel: z.string(),
+      locationLabel: z.string(),
+    }),
+    deckSide: z.object({
+      projectLabel: z.string(),
+      projectsLabel: z.string(),
+    }),
+    ledger: z.object({
+      estudio: z.object({
+        title: z.string(),
+        members: z.array(z.string()),
+        placeholderRole: z.string(),
+        operatingSince: z.string(),
+      }),
+      clientes: z.object({
+        title: z.string(),
+        names: z.array(z.string()),
+      }),
+      lineas: z.object({
+        title: z.string(),
+      }),
+    }),
+    posicion: z.object({
+      lead: z.string(),
+      paragraph1: z.string(),
+      paragraph2: z.string(),
+      cta: z.string(),
+    }),
+    transicion: z.object({
+      pre: z.string(),
+      postLabel: z.string(),
+      postHeadlineLine1: z.string(),
+      postHeadlineLine2: z.string(),
+    }),
+  }),
+
   // Client Brief — the landing page's contact form. Full 6-step wizard, content taken
   // directly from orpheus-mocks/.../index.html's PASOS array (exact field labels/help
   // text), not paraphrased.

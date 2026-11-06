@@ -23,6 +23,61 @@
     "placeholder": "POR DEFINIR"
   },
 
+  "services": {
+    "lines": {
+      "estrategia": "Estrategia",
+      "contenido": "Contenido",
+      "ia": "IA",
+      "desarrollo": "Desarrollo",
+      "marca": "Marca",
+      "automatizacion": "Automatización"
+    }
+  },
+
+  "hero": {
+    "meta": {
+      "portfolioLabel": "Portafolio conjunto · 2026",
+      "locationLabel": "Querétaro, México · remoto en todo el país"
+    },
+    "deckSide": {
+      "projectLabel": "Proyecto",
+      "projectsLabel": "Proyectos"
+    },
+    "ledger": {
+      "estudio": {
+        "title": "Estudio",
+        "members": ["Ana Sofía Urrutia", "CEO y brand strategist", "Equipo de producción audiovisual"],
+        "placeholderRole": "Socio desarrollador",
+        "operatingSince": "En operación desde nov 2025"
+      },
+      "clientes": {
+        "title": "Clientes seleccionados",
+        "names": [
+          "Hergom Chimenea",
+          "Eurocantos",
+          "La Zona Bienes Raíces",
+          "Grupo BLOCK",
+          "Coliving para adultos mayores"
+        ]
+      },
+      "lineas": {
+        "title": "Líneas de servicio"
+      }
+    },
+    "posicion": {
+      "lead": "Somos estrategia de marketing e innovación curada y humana.",
+      "paragraph1": "Unimos creatividad con herramientas de IA para que tu negocio dé el siguiente paso sin perder su esencia.",
+      "paragraph2": "La IA es herramienta. El criterio es nuestro.",
+      "cta": "Enfoque y metodología"
+    },
+    "transicion": {
+      "pre": "sigue bajando",
+      "postLabel": "Del diagnóstico a la ejecución",
+      "postHeadlineLine1": "Enfoque y",
+      "postHeadlineLine2": "metodología"
+    }
+  },
+
   "brief": {
     "eyebrow": "Agenda tu diagnóstico",
     "title": "Client Brief",

@@ -1,75 +1,180 @@
 <script setup lang="ts">
-const { brand } = useBrand()
-const { isDark, toggleTheme } = useTheme()
+import logoUrl from '~/assets/images/orpheus-logo.png'
+import { brandConfig } from '~/config/brand'
+
+const { t } = useLocale()
+
+// The topbar is always the "papel" (light) composition, per the brand manual's
+// footer/header placement rule — independent of useTheme()'s toggle, which governs
+// in-page section rhythm elsewhere, not this fixed chrome.
+const papel = brandConfig.light
+// Flat (dot-free) copies for `v-bind()` in <style> — a dotted path like
+// `v-bind('papelBg')` compiles to a CSS custom property literally named
+// `--hash-papel.background`, and an unescaped `.` isn't valid inside a bare `var()`
+// reference, so the binding silently fails to resolve (renders as the `background`'s
+// initial value — transparent).
+const papelBg = papel.background
+const papelBase = papel.base
+
+const ctaRef = useTemplateRef<HTMLElement>('ctaRef')
+const ctaInnerRef = useTemplateRef<HTMLElement>('ctaInnerRef')
+useMagnetic(ctaRef, ctaInnerRef, 0.3)
+
+const navLinks = [
+  { href: '#equipo', label: () => t('nav.nosotros') },
+  { href: '#servicios', label: () => t('nav.servicios') },
+  { href: '#casos', label: () => t('nav.portafolio') },
+  { href: '#enfoque', label: () => t('nav.metodologia') },
+  { href: '#contacto', label: () => t('nav.contacto') },
+]
 </script>
 
 <template>
-  <header class="border-brand-base/10 bg-brand-neutral border-b">
-    <nav class="container mx-auto flex items-center justify-between px-4 py-4">
-      <NuxtLink
-        to="/"
-        class="font-logo text-brand-accent text-xl font-bold"
+  <header class="topbar">
+    <div class="wrap">
+      <a
+        href="#portada"
+        class="marca"
       >
-        {{ brand.name }}
-      </NuxtLink>
+        <img
+          :src="logoUrl"
+          :alt="`${brandConfig.name}, inicio`"
+          height="34"
+        />
+      </a>
 
-      <div class="flex items-center gap-6">
-        <div class="font-primary flex gap-6">
-          <NuxtLink
-            to="/"
-            class="text-brand-base/70 hover:text-brand-accent transition"
-            active-class="text-brand-accent font-semibold"
-          >
-            Home
-          </NuxtLink>
-          <NuxtLink
-            to="/about"
-            class="text-brand-base/70 hover:text-brand-accent transition"
-            active-class="text-brand-accent font-semibold"
-          >
-            About
-          </NuxtLink>
-        </div>
-
-        <!-- Theme Toggle -->
-        <button
-          type="button"
-          class="text-brand-base/70 hover:text-brand-accent hover:bg-brand-base/5 rounded-lg p-2 transition"
-          :title="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          @click="toggleTheme"
+      <nav
+        class="nav"
+        aria-label="Secciones"
+      >
+        <a
+          v-for="link in navLinks"
+          :key="link.href"
+          :href="link.href"
         >
-          <!-- Sun icon (light mode) -->
-          <svg
-            v-if="!isDark"
-            class="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          {{ link.label() }}
+        </a>
+      </nav>
+
+      <div class="top-acc">
+        <a
+          class="acceso-link"
+          href="/portal"
+        >
+          {{ t('nav.accesoClientes') }}
+        </a>
+        <a
+          ref="ctaRef"
+          class="pill pill--cta"
+          href="#contacto"
+        >
+          <span
+            ref="ctaInnerRef"
+            class="mag-inner"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-            />
-          </svg>
-          <!-- Moon icon (dark mode) -->
-          <svg
-            v-else
-            class="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-            />
-          </svg>
-        </button>
+            {{ t('nav.agendaDiagnostico') }}
+          </span>
+        </a>
       </div>
-    </nav>
+    </div>
   </header>
 </template>
+
+<style scoped>
+.topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  background: v-bind('papelBg');
+  color: v-bind('papelBase');
+  border-bottom: 1px solid color-mix(in srgb, v-bind('papelBase') 24%, transparent);
+}
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 10px;
+  padding-inline: clamp(16px, 4vw, 48px);
+}
+.marca {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.marca img {
+  display: block;
+  height: clamp(26px, 2.6vw, 34px);
+  width: auto;
+}
+.nav {
+  display: flex;
+  gap: 6px;
+}
+.nav a {
+  font: 500 15px/1 var(--font-primary);
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: inherit;
+  transition: background 150ms;
+}
+.nav a:hover {
+  background: color-mix(in srgb, v-bind('papelBase') 8%, transparent);
+}
+@media (max-width: 860px) {
+  .nav {
+    display: none;
+  }
+}
+.top-acc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.acceso-link {
+  font: 500 15px/1 var(--font-primary);
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1.5px solid v-bind('papelBase');
+  color: inherit;
+  white-space: nowrap;
+  transition:
+    background 150ms,
+    color 150ms;
+}
+.acceso-link:hover {
+  background: v-bind('papelBase');
+  color: v-bind('papelBg');
+}
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font: 500 15px/1 var(--font-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  will-change: transform;
+}
+.pill--cta {
+  background: var(--color-brand-accent);
+  color: v-bind('papelBg');
+}
+.mag-inner {
+  display: inline-flex;
+  pointer-events: none;
+}
+@media (max-width: 520px) {
+  .acceso-link {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  .pill {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+}
+</style>
