@@ -489,7 +489,11 @@ function cardInitialStyle(i: number) {
 }
 .sl-serif {
   font-family: var(--font-quote);
-  font-style: normal;
+  /* The mock's own CSS says `normal`, but its Google Fonts link only ever requested
+     Instrument Serif's italic axis (`ital@1`) — the browser fell back to showing that
+     italic face regardless. We load both faces (see nuxt.config.ts), so matching the
+     mock's actual rendered look takes an explicit override here. */
+  font-style: italic;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
